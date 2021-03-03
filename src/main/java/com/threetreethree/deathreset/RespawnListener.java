@@ -13,16 +13,20 @@ public class RespawnListener implements Listener {
 
   @EventHandler
   public void onPlayerRespawn(PlayerRespawnEvent event) {
-    Bukkit.broadcastMessage("Starting teleport");
-    Bukkit.getScheduler().scheduleSyncDelayedTask(Bukkit.getPluginManager().getPlugin("DeathReset"), () -> {
-        List<Player> playersWrongWorld = Objects.requireNonNull(Bukkit.getWorld("world")).getPlayers();
-        if (!playersWrongWorld.isEmpty()) {
-            playersWrongWorld.forEach(
-                player -> {
-                    Bukkit.broadcastMessage(player.getName());
-                    player.teleport(Objects.requireNonNull(Bukkit.getWorld("world_cur")).getSpawnLocation());
-                });
-        }
-    }, 20);
+    Bukkit.getScheduler()
+        .scheduleSyncDelayedTask(
+            Bukkit.getPluginManager().getPlugin("DeathReset"),
+            () -> {
+              List<Player> playersWrongWorld =
+                  Objects.requireNonNull(Bukkit.getWorld("world")).getPlayers();
+              if (!playersWrongWorld.isEmpty()) {
+                playersWrongWorld.forEach(
+                    player -> {
+                      player.teleport(
+                          Objects.requireNonNull(Bukkit.getWorld("world_cur")).getSpawnLocation());
+                    });
+              }
+            },
+            20);
   }
 }
