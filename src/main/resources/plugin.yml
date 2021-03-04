@@ -1,6 +1,6 @@
 name: DeathReset
 version: 1.0
 main: com.threetreethree.deathreset.DeathReset
-description: This plugin is the death of us. Omega hardcore mode.
+description: Omega hardcore
 api-version: 1.16
-authors: [Yonis, 3TT]
+authors: [ Osmian, Yonis, 3TT ]
